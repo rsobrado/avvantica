@@ -1,11 +1,11 @@
 # Avvantica Front-end challenge
-Create a new React app which complies with these requirements:
-.Get a list of products from an API. 
-.Save the list of products in Redux. 
-.The request should be done in an async action. 
-.Show the list of products. 
-.Filter the list of products by name. 
-.Any UX/UI improvement is a plus. 
+Create a new React app which complies with these requirements:  
+Get a list of products from an API. 
+Save the list of products in Redux. 
+The request should be done in an async action. 
+Show the list of products. 
+Filter the list of products by name. 
+Any UX/UI improvement is a plus. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
