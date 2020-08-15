@@ -1,5 +1,5 @@
 :root {
-  --main-color: #f6f5f3;
+  --main-color: #c2c8cf;
   --secondary-color: wheat;
   --third-color: #c19579;
   --warning-color: #e6b417;
@@ -29,15 +29,14 @@ body {
   }
 }
 
-
 .logo {
   width: 120px;
-  path {
+  tspan {
     fill: var(--third-color);
   }
   @media screen and (prefers-color-scheme: dark) {
-    path {
-      fill: var(--secondary-color);
+    tspan {
+      fill: var(--main-color);
     }
   }
 }
@@ -47,15 +46,13 @@ img {
   box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.1),
     0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
-    border: 15px solid white;
-    box-sizing: border-box;
+  border: 15px solid white;
+  box-sizing: border-box;
 }
 
-
-.img-fl{
+.img-fl {
   width: 100% !important;
   margin-left: 0 !important;
-  
 }
 
 h1,
@@ -99,7 +96,7 @@ h3 {
 button {
   font-weight: 600 !important;
   font-size: 1.15rem !important;
-  text-shadow: 0 1px 1px black;
+  // text-shadow: 0 1px 1px black;
   line-height: 1.1 !important;
   &:hover {
     color: var(--warning-color) !important;

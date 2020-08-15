@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   btnBuy: {
-    width: '100%',
+    minWidth: '100px',
     borderRadius: 8,
     background: 'var(--warning-color)',
     padding: 8,
@@ -83,11 +83,11 @@ export default function Product(props) {
   const [open, setOpen] = useState(false)
 
   const handleClickOpen = () => {
-    setOpen(true)
+    setOpen(!open)
   }
 
   const handleClose = () => {
-    setOpen(false)
+    setOpen(!open)
   }
 
   useEffect(() => {
@@ -104,6 +104,7 @@ export default function Product(props) {
 
   const handleBuy = () => {
     props.onClick()
+    setOpen(false)
   }
 
   return (
@@ -155,7 +156,7 @@ export default function Product(props) {
           <Button onClick={handleClose} color="primary">
             Close
           </Button>
-          <Button onClick={handleBuy} variant="contained" color="secondary">
+          <Button className={classes.btnBuy} onClick={handleBuy}>
             Buy
           </Button>
         </DialogActions>

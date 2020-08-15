@@ -16,7 +16,7 @@ import Slide from '@material-ui/core/Slide'
 
 const useStyles = makeStyles((theme) => ({
   cart: {
-    background: 'var(--third-color)',
+    background: 'var(--dark-main-color)',
     borderRadius: '0 0 20px 20px',
     position: 'absolute',
     padding: 0,

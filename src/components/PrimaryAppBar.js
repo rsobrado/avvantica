@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     textShadow: 'none',
     '@media screen and (prefers-color-scheme: dark) ': {
       background: 'var(--warning-color)',
-      color: 'var(--dark-secondary-color)',
+      color: 'var(--main-color)',
     },
   },
 }))

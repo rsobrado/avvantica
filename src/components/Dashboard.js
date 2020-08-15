@@ -43,14 +43,24 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     paddingRight: 20,
     marginRight: 20,
+
+    color: 'var(--dark-color)',
     '&:hover': {
       backgroundColor: 'var(--secondary-color)',
+      '@media screen and (prefers-color-scheme: dark) ': {
+        background: 'var(--dark-secondary-color)',
+      },
     },
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
+    },
+
+    '@media screen and (prefers-color-scheme: dark) ': {
+      background: 'var(--dark-warning-color)',
+      color: 'var(--dark-color)',
     },
   },
   searchIcon: {
@@ -63,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    // color: 'inherit',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -86,7 +96,6 @@ export default function Dashboard() {
   const [cartItems, setCartItems] = useState(0)
 
   const [search, setSearch] = useState('')
-  const [filteredProducts, setFilteredProducts] = useState([])
   const [cartOpen, setCartOpen] = useState(false)
 
   const handleAddToCart = (event) => {
@@ -118,7 +127,7 @@ export default function Dashboard() {
     } else {
       loadData()
     }
-  }, [search])
+  }, [search,products])
 
   return (
     <React.Fragment>
@@ -136,7 +145,7 @@ export default function Dashboard() {
               variant="h1"
               component="h1"
               className={classes.title}>
-              Catalog
+              Products Collection
             </Typography>
           </Grid>
 
