@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Jordan Mens MAX Aura",
+    "description": "Amazon Best Sellers Rank: #168,737 in Clothing, Shoes & Jewelry (See Top 100 in Clothing, Shoes & Jewelry",
+    "price": 290,
+    "reviewRating": 4.7,
+    "imageFileName": "jordan_Aura.jpg"
+  },
+  {
+    "id": 2,
+    "name": "AirPods",
+    "description": "AirPods Pro have been designed to deliver Active Noise Cancellation for immersive sound, Transparency mode so you can hear your surroundings, and a customizable fit for all-day comfort. Just like AirPods, AirPods Pro connect magically to your iPhone or Apple Watch. And they’re ready to use right out of the case.",
+    "price": 249,
+    "reviewRating": 3.6,
+    "imageFileName": "AirPods.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Nintendo Switch",
+    "description": "Gaming system that lets you play the games you want, wherever you are, however you like. Includes the Nintendo Switch console and Nintendo Switch dock in black, with contrasting left and right Joy‑Con controllers-one red, one blue. Also includes all the extras you need to get started. Model number: HAC-001(-01) (product serial number begins with “XKW”) This model includes battery life of approximately 4.5 - 9 hours. The battery life will depend on the games you play. For instance, the battery will last approximately 5.5 hours for The Legend of Zelda: Breath of the Wild (games sold separately).",
+    "price": 420,
+    "reviewRating": 3.8,
+    "imageFileName": "nintendo_sw.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Victrola Vintage",
+    "description": "Our Euro pillow top packs in more cushioning materials than a standard pillow top and is tucked underneath our organic cotton cover for a clean look. We've also added our exclusive Guardin® botanical antimicrobial fabric treatment to our organic cover and finished it all with an organic damask bronze trim",
+    "price": 180,
+    "reviewRating": 2.3,
+    "imageFileName": "vitrola.jpg"
+  },
+  {
+    "id": 5,
+    "name": "PIONEER HDJ-X10-S",
+    "description": "Stay on top of your game with the flagship HDJ-X10 over-ear headphones. Refined with input from professional DJs to serve you at festivals, clubs and everywhere in between, they’ll change the way you experience music. Producing high-resolution sound ranging from 5 Hz to 40 kHz thanks to a new 50mm driver, they’re ideal for DJ monitoring, delivering clear left and right channel separation as well as greater separation of rich bass tones and crisp mid to high frequencies.",
+    "price": 359,
+    "reviewRating": 4.6,
+    "imageFileName": "SX679.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Zenhaven",
+    "description": "Our Euro pillow top packs in more cushioning materials than a standard pillow top and is tucked underneath our organic cotton cover for a clean look. We've also added our exclusive Guardin® botanical antimicrobial fabric treatment to our organic cover and finished it all with an organic damask bronze trim",
+    "price": 1599,
+    "reviewRating": 4.1,
+    "imageFileName": "zen.jpg"
+  }
+]
