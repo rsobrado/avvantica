@@ -10,9 +10,9 @@ Create a new React app which complies with these requirements:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Installation 
-### `npm install`
-### `json-server --watch db.json `
-### `npm start`
+#### `npm install`
+#### `json-server --watch db.json `
+#### `npm start`
 
 
 ## Available Scripts
