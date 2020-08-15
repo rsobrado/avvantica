@@ -8,8 +8,6 @@ import Typography from '@material-ui/core/Typography'
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
 
-
-
 import Catalog from './Catalog'
 import PrimaryAppBar from './PrimaryAppBar'
 
@@ -42,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
     backgroundColor: 'var(--main-color)',
     transition: 'all 0.2s ease-in-out',
+    overflow: 'hidden',
+    paddingRight: 20,
+    marginRight: 20,
     '&:hover': {
       backgroundColor: 'var(--secondary-color)',
     },
@@ -84,24 +85,40 @@ export default function Dashboard() {
   const [products, setProducts] = useState([])
   const [cartItems, setCartItems] = useState(0)
 
-  const [value, setValue] = useState('')
+  const [search, setSearch] = useState('')
+  const [filteredProducts, setFilteredProducts] = useState([])
   const [cartOpen, setCartOpen] = useState(false)
 
   const handleAddToCart = (event) => {
     setCartItems(cartItems + 1)
+  }
+  const handleSearch = (event) => {
+    setSearch(event.target.value)
   }
 
   const handleOpenCart = () => {
     setCartOpen(!cartOpen)
   }
 
+  const loadData = async () => {
+    const result = await axios('http://localhost:3000/products')
+    setProducts(result.data)
+  }
+
   useEffect(() => {
-    async function loadData() {
-      const result = await axios('http://localhost:3000/products')
-      setProducts(result.data)
-    }
     loadData()
   }, [])
+
+  useEffect(() => {
+    if (search !== '') {
+      const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
+      )
+      setProducts(filtered)
+    } else {
+      loadData()
+    }
+  }, [search])
 
   return (
     <React.Fragment>
@@ -113,7 +130,7 @@ export default function Dashboard() {
 
       <Container fixed maxWidth="lg" style={{ padding: '40px 0 0' }}>
         <Grid container spacing={0}>
-          <Grid item xs={12} lg={9} style={{ textAlign: 'left' }}>
+          <Grid item xs={12} lg={10} style={{ textAlign: 'left' }}>
             <Typography
               gutterBottom
               variant="h1"
@@ -123,7 +140,7 @@ export default function Dashboard() {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} lg={3} style={{ textAlign: 'right' }}>
+          <Grid item xs={12} lg={2} style={{ textAlign: 'right' }}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -135,6 +152,7 @@ export default function Dashboard() {
                   input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
+                onChange={handleSearch}
               />
             </div>
           </Grid>

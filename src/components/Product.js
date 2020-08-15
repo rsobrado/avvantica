@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
   },
   ButtonGroup: {
-    margin: 5,
+    margin: '0 5px 5px',
     justifyContent: 'space-between',
     width: '100%',
     borderRadius: 8,
@@ -74,13 +74,13 @@ export default function Product(props) {
   const [price, setPrice] = useState(props.product.price)
   const [rating, setRating] = useState(props.product.reviewRating)
   const [description, setDescription] = useState(props.product.description)
-  const [checked, setChecked] = React.useState(false)
+  const [checked, setChecked] = useState(false)
   const [imageFileName, setImageFileName] = useState(
     props.product.imageFileName
     
   )
 
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
 
   const handleClickOpen = () => {
     setOpen(true)
