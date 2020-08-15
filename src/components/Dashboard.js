@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
-
+import data from './../data/data.json'
 import Catalog from './Catalog'
 import PrimaryAppBar from './PrimaryAppBar'
 
@@ -94,10 +94,8 @@ export default function Dashboard() {
   const classes = useStyles()
   const [products, setProducts] = useState([])
   const [cartItems, setCartItems] = useState(0)
-
   const [search, setSearch] = useState('')
   const [cartOpen, setCartOpen] = useState(false)
-
   const handleAddToCart = (event) => {
     setCartItems(cartItems + 1)
   }
@@ -109,17 +107,23 @@ export default function Dashboard() {
     setCartOpen(!cartOpen)
   }
 
+// ****** static Data from EndPoint 
   const loadData = async () => {
     const result = await axios('http://localhost:3000/products')
     setProducts(result.data)
   }
+
+  // ****** static Data from array 
+  // const loadData = () => {
+  //   setProducts(data)
+  // }
 
   useEffect(() => {
     loadData()
   }, [])
 
   useEffect(() => {
-    if (search !== '') {
+    if (search !== '' && (products.length>0)) {
       const filtered = products.filter((product) =>
         product.name.toLowerCase().includes(search.toLowerCase())
       )
