@@ -127,7 +127,7 @@ export default function Dashboard() {
     } else {
       loadData()
     }
-  }, [search,products])
+  }, [search])
 
   return (
     <React.Fragment>
