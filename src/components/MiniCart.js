@@ -20,13 +20,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '0 0 20px 20px',
     position: 'absolute',
     padding: 0,
-    right: 20,
+    right: '10%',
     top: 75,
     zIndex: '0',
+    '@media screen and (prefers-color-scheme: dark) ': {
+      background: 'var(--main-color)',
+    },
   },
   List: {
     background: 'white',
     margin: '0 10px 10px',
+    padding: '10px 20px',
     borderRadius: '0 0 15px 15px',
     boxShadow:
       '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)',

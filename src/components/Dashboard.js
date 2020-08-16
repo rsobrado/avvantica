@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import axios from 'axios'
 import Typography from '@material-ui/core/Typography'
-
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
-import data from './../data/data.json'
+
 import Catalog from './Catalog'
 import PrimaryAppBar from './PrimaryAppBar'
+// import data from './../data/data.json'
 
 const useStyles = makeStyles((theme) => ({
   mattressesContaner: {
     padding: 20,
-    '@media screen and (min-width: 600px)': {
-      padding: 50,
+    [theme.breakpoints.up('sm')]: {
+      padding: '0 50px 150px',
     },
   },
   contained: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontFamily: 'Suez One !important',
     fontSize: '3.6rem !important',
+    letterSpacing: 2,
   },
   search: {
     position: 'relative',
@@ -44,6 +46,8 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 20,
     marginRight: 20,
 
+    boxShadow: 'inset -6px 6px 11px rgba(0, 0, 0, 0.15),inset -3px 3px 6px rgba(0, 0, 0, 0.15)',
+    border: '1px solid rgba(0, 0, 0, 0.2)',
     color: 'var(--dark-color)',
     '&:hover': {
       backgroundColor: 'var(--secondary-color)',
@@ -78,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(5)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -107,13 +111,13 @@ export default function Dashboard() {
     setCartOpen(!cartOpen)
   }
 
-// ****** static Data from EndPoint 
+  // ****** static Data from EndPoint
   const loadData = async () => {
     const result = await axios('http://localhost:3000/products')
     setProducts(result.data)
   }
 
-  // ****** static Data from array 
+  // ****** static Data from array
   // const loadData = () => {
   //   setProducts(data)
   // }
@@ -123,11 +127,15 @@ export default function Dashboard() {
   }, [])
 
   useEffect(() => {
-    if (search !== '' && (products.length>0)) {
+    if (search !== '') {
       const filtered = products.filter((product) =>
         product.name.toLowerCase().includes(search.toLowerCase())
       )
-      setProducts(filtered)
+      if (filtered.length > 0) {
+        setProducts(filtered)
+      } else {
+        loadData()
+      }
     } else {
       loadData()
     }
@@ -141,9 +149,9 @@ export default function Dashboard() {
         isOpen={cartOpen}
       />
 
-      <Container fixed maxWidth="lg" style={{ padding: '40px 0 0' }}>
-        <Grid container spacing={0}>
-          <Grid item xs={12} lg={10} style={{ textAlign: 'left' }}>
+      <Container fixed maxWidth="lg" style={{ padding: 40 }}>
+        <Grid container spacing={0} style={{ alignItems: 'center' }}>
+          <Grid item xs={12} lg={9} style={{ textAlign: 'left' }}>
             <Typography
               gutterBottom
               variant="h1"
@@ -153,7 +161,7 @@ export default function Dashboard() {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} lg={2} style={{ textAlign: 'right' }}>
+          <Grid item xs={12} lg={3} style={{ textAlign: 'right' }}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />

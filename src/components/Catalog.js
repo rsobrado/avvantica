@@ -14,11 +14,14 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     flexGrow: 1,
-    boxShadow: 'inset 0 -1px 2px rgba(0,0,0,0.12)',
+    boxShadow: 'inset 0 -1px 2px rgba(0,0,0,0.12), -29px 0 60px -40px',
     borderRadius: 15,
     color: 'var(--dark-main-color)',
     background: 'linear-gradient(60deg, #ffffff, transparent)',
-    padding: 100,
+    padding: 10,
+    [theme.breakpoints.up('lg')]: {
+      padding: 100,
+    },
     '@media screen and (prefers-color-scheme: dark) ': {
       background: 'linear-gradient(60deg, rgba(0,0,0,0.3), transparent)',
       color: 'var(--main-color)',
@@ -56,7 +59,6 @@ export default function Catalog(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={10}>
-        
         {products &&
           products.map((product, index) => (
             <Product key={index} product={product} onClick={props.onClick} />

@@ -19,14 +19,27 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
     },
   },
-  colorPrimary: {
+  header: {
     background: 'linear-gradient(60deg,white,var(--main-color))',
-    color: 'var(--dark-main-color)',
-    zIndex: 999,
-    padding: 10,
-    // position: "relative",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: '10%',
+    paddingRight: '10%',
+    zIndex:10,
+    boxShadow: '0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12)',
     '@media screen and (prefers-color-scheme: dark) ': {
       background: 'linear-gradient(60deg, var(--dark-main-color), #023475)',
+    },
+
+  },
+  colorPrimary: {
+    // background: 'linear-gradient(60deg,white,var(--main-color))',
+    color: 'var(--dark-main-color)',
+    zIndex: 999,
+    padding: 0,
+    // position: "relative",
+    '@media screen and (prefers-color-scheme: dark) ': {
+      // background: 'linear-gradient(60deg, var(--dark-main-color), #023475)',
       color: 'var(--dark-warning-color)',
     },
   },
@@ -36,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     textShadow: 'none',
     '@media screen and (prefers-color-scheme: dark) ': {
       background: 'var(--warning-color)',
-      color: 'var(--main-color)',
+      // color: 'var(--main-color)',
     },
   },
 }))
@@ -60,15 +73,15 @@ export default function PrimaryAppBar(props) {
   
   return (
     <AppBar
-      position="static"
+      position="fixed"
       className={classes.grow}
-      elevation={2}
+      elevation={10}
       classes={{
         colorPrimary: classes.colorPrimary,
       }}>
-      <Container maxWidth="xl" disableGutters>
-        <Toolbar>
           <MiniCart isOpen={cartOpen} />
+      <Container maxWidth="false" disableGutters className={classes.header}>
+        <Toolbar>
           <div className="logo">
             <svg xmlns="http://www.w3.org/2000/svg" width="99px"height="22px">
               <text
