@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
+import {useSelector} from 'react-redux'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -41,17 +42,37 @@ export default function MiniCart(props) {
   const classes = useStyles()
 
   const [cartOpen, setCartOpen] = useState(props.isOpen)
-  
+  const [products, setProducts] =  useState([])
+
+
   useEffect(() => {
     setCartOpen(props.isOpen)
     
-  }, [props])
+  }, [props.isOpen])
+
+  const state = useSelector((state)=>  state)
+  
+  useEffect(() => {
+    setProducts(state.products)
+  }, [])
 
   return (
     <Slide direction="down" in={cartOpen} mountOnEnter unmountOnExit>
       <Paper className={classes.cart} elevation={24}>
         <List dense={true} className={classes.List}>
-          <ListItem>
+          {products &&
+            products.map((product, index) => (
+              <ListItem>
+                <ListItemText>{product.name} - ${product.price} </ListItemText>
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" aria-label="delete">
+                    <DeleteForeverIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))
+            }
+          {/* <ListItem>
             <ListItemText>Item - $999</ListItemText>
             <ListItemSecondaryAction>
               <IconButton edge="end" aria-label="delete">
@@ -90,7 +111,7 @@ export default function MiniCart(props) {
                 <BackspaceIcon />
               </IconButton>
             </ListItemSecondaryAction>
-          </ListItem>
+          </ListItem> */}
         </List>
       </Paper>
     </Slide>

@@ -134,3 +134,7 @@ button {
     padding: 10px !important;
   }
 }
+
+ul:empty {
+    display: none ;
+}

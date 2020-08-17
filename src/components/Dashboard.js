@@ -97,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles()
   const [products, setProducts] = useState([])
+  const [carProducts, setCarProducts] = useState([])
   const [cartItems, setCartItems] = useState(0)
   const [search, setSearch] = useState('')
   const [cartOpen, setCartOpen] = useState(false)
@@ -147,6 +148,7 @@ export default function Dashboard() {
         cartItems={cartItems}
         onClick={handleOpenCart}
         isOpen={cartOpen}
+        products={carProducts}
       />
 
       <Container fixed maxWidth="lg" style={{ padding: 40 }}>

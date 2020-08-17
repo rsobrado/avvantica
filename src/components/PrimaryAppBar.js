@@ -25,12 +25,12 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 10,
     paddingLeft: '10%',
     paddingRight: '10%',
-    zIndex:10,
-    boxShadow: '0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12)',
+    zIndex: 10,
+    boxShadow:
+      '0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12)',
     '@media screen and (prefers-color-scheme: dark) ': {
       background: 'linear-gradient(60deg, var(--dark-main-color), #023475)',
     },
-
   },
   colorPrimary: {
     // background: 'linear-gradient(60deg,white,var(--main-color))',
@@ -56,8 +56,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimaryAppBar(props) {
   const classes = useStyles()
-  const [cartItems, setCartItems] = useState(0)
-  const [cartOpen, setCartOpen] = useState(props.isOpen);
+  const [cartItems, setCartItems] = useState(props.cartItems)
+  const [cartOpen, setCartOpen] = useState(props.isOpen)
+
 
   useEffect(() => {
     props.onClick()
@@ -69,8 +70,8 @@ export default function PrimaryAppBar(props) {
 
   useEffect(() => {
     setCartItems(props.cartItems)
-  }, [props])
-  
+  }, [props.cartItems])
+
   return (
     <AppBar
       position="fixed"
@@ -79,11 +80,11 @@ export default function PrimaryAppBar(props) {
       classes={{
         colorPrimary: classes.colorPrimary,
       }}>
-          <MiniCart isOpen={cartOpen} />
-      <Container maxWidth="false" disableGutters className={classes.header}>
+      <MiniCart isOpen={cartOpen} products={props.products} />
+      <Container maxWidth={false} disableGutters className={classes.header}>
         <Toolbar>
           <div className="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="99px"height="22px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="99px" height="22px">
               <text
                 kerning="auto"
                 fontFamily="Myriad Pro"
@@ -91,8 +92,7 @@ export default function PrimaryAppBar(props) {
                 x="0px"
                 y="21.721px">
                 <tspan
-                  style={{fontSize :"25.321px",
-                  fontFamily :"Norwester"}}
+                  style={{ fontSize: '25.321px', fontFamily: 'Norwester' }}
                   fill="#000000">
                   logoHere
                 </tspan>
