@@ -1,4 +1,4 @@
-# Avvantica Front-end challenge
+# Shopping Cart
 Create a new React app which complies with these requirements:  
 #### Get a list of products from an API. 
 #### Save the list of products in Redux. 
